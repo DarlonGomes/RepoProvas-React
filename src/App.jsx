@@ -9,7 +9,7 @@ function App() {
       <CssBaseline />
       <BrowserRouter>
       <RouterNavigator />
-      </BrowserRouter>
+      </BrowserRouter> 
     </HandlerProvider>
   );
 }
