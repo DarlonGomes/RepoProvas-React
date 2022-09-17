@@ -5,9 +5,9 @@ import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default function HandleAlert({ isOpen, setIsOpen, message }) {
+export default function HandleAlert({ isAlertOpen , setIsAlertOpen, message }) {
   return (
-    <Collapse in={isOpen}>
+    <Collapse in={isAlertOpen }>
       <Alert
         severity="warning"
         action={
@@ -16,7 +16,7 @@ export default function HandleAlert({ isOpen, setIsOpen, message }) {
             color="inherit"
             size="small"
             onClick={() => {
-              setIsOpen(false);
+              setIsAlertOpen(false);
             }}
           >
             <CloseIcon fontSize="inherit" />

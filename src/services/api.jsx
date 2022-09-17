@@ -4,7 +4,7 @@ export const api = axios.create({
     baseURL: import.meta.env.VITE_API
 });
 
-export const signUp = async (data) => api.post("/user/sign-up", data);
+export const signUp = async (data) => api.post("/api/user/sign-up", data);
 
 export const signIn = async (data) => api.post("/user/sign-in", data);
 

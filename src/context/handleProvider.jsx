@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const HandlerContext = createContext(null);
 
 function HandlerProvider({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [ isAlertOpen , setIsAlertOpen] = useState(false);
   const [logout, setLogout] = useState(false);
   const [method, setMethod] = useState("");
   const removeLocal = () => {
@@ -12,8 +12,8 @@ function HandlerProvider({ children }) {
   return (
     <HandlerContext.Provider
       value={{
-        isOpen,
-        setIsOpen,
+        isAlertOpen,
+        setIsAlertOpen,
         logout,
         setLogout,
         removeLocal,

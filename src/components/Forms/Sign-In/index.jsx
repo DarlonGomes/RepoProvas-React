@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -22,9 +22,11 @@ import IconButton from "@mui/material/IconButton";
 import { InputLabel, OutlinedInput, FormControl } from "@mui/material";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { HandlerContext } from "../../../context/handleProvider";
+
 export default function SignIn() {
   const [isDisabled, setDisabled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const { isAlertOpen, setIsAlertOpen } = useContext(HandlerContext);
   const [message, setMessage] = useState("");
   const [values, setValues] = useState({
     email: "",
@@ -60,7 +62,7 @@ export default function SignIn() {
           showPassword: false,
         });
         setMessage(err.response.data);
-        setIsOpen(true);
+        setIsAlertOpen(true);
       }, 1000);
     }
   };
@@ -82,7 +84,7 @@ export default function SignIn() {
 
   return (
     <Ambient>
-      <HandleAlert isOpen={isOpen} setIsOpen={setIsOpen} message={message} />
+      <HandleAlert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} message={message} />
       <Menu>
         <Banner>
           <AssignmentIcon
