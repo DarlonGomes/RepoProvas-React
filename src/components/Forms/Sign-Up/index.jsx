@@ -48,7 +48,7 @@ export default function SignUp() {
 
       setDisabled(false);
       setTimeout(() => {
-        navigate("/home");
+        navigate("/sign-in");
       }, 1000);
     } catch (err) {
       setTimeout(() => {
@@ -124,6 +124,7 @@ export default function SignUp() {
                 label="Email"
                 disabled={isDisabled}
                 style={{ backgroundColor: isDisabled ? "#CECECE" : "#FAFAFA" }}
+                autoComplete="off"
               />
             </FormControl>
             <FormControl
@@ -134,7 +135,7 @@ export default function SignUp() {
                 Password *
               </InputLabel>
               <OutlinedInput
-                id="outlined-adornment-password"
+                id="outlined-adornment-password-input"
                 type={values.showPassword ? "text" : "password"}
                 value={values.password}
                 onChange={handleChange("password")}
@@ -153,6 +154,7 @@ export default function SignUp() {
                 label="Password"
                 disabled={isDisabled}
                 style={{ backgroundColor: isDisabled ? "#CECECE" : "#FAFAFA" }}
+                autoComplete="off"
               />
             </FormControl>
             <FormControl sx={{ width: "700px" }} variant="outlined">
@@ -179,6 +181,7 @@ export default function SignUp() {
                 label="Password"
                 disabled={isDisabled}
                 style={{ backgroundColor: isDisabled ? "#CECECE" : "#FAFAFA" }}
+                autoComplete="off"
               />
             </FormControl>
 
