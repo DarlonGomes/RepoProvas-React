@@ -23,7 +23,7 @@ import { InputLabel, OutlinedInput, FormControl } from "@mui/material";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { HandlerContext } from "../../../context/handleProvider";
-
+import { storeDataInLocalStorage } from "../../../utils";
 export default function SignIn() {
   const [isDisabled, setDisabled] = useState(false);
   const { isAlertOpen, setIsAlertOpen } = useContext(HandlerContext);
@@ -45,12 +45,9 @@ export default function SignIn() {
     };
     try {
       const response = await signIn(form);
-      localStorage.setItem(
-        import.meta.VITE_LOCAL_STORAGE,
-        JSON.stringify(response.data.config)
-      );
-      setDisabled(false);
+      storeDataInLocalStorage(response.data.config);
       setTimeout(() => {
+        setDisabled(false);
         navigate("/home");
       }, 1000);
     } catch (err) {
@@ -84,7 +81,11 @@ export default function SignIn() {
 
   return (
     <Ambient>
-      <HandleAlert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} message={message} />
+      <HandleAlert
+        isAlertOpen={isAlertOpen}
+        setIsAlertOpen={setIsAlertOpen}
+        message={message}
+      />
       <Menu>
         <Banner>
           <AssignmentIcon
@@ -123,6 +124,7 @@ export default function SignIn() {
                 onChange={handleChange("email")}
                 label="Email"
                 disabled={isDisabled}
+                autoComplete="off"
                 style={{ backgroundColor: isDisabled ? "#CECECE" : "#FAFAFA" }}
               />
             </FormControl>
@@ -148,6 +150,7 @@ export default function SignIn() {
                   </InputAdornment>
                 }
                 label="Password"
+                autoComplete="off"
                 disabled={isDisabled}
                 style={{ backgroundColor: isDisabled ? "#CECECE" : "#FAFAFA" }}
               />
