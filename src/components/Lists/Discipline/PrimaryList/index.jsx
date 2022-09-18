@@ -8,6 +8,7 @@ import {
   Collapse,
 } from "@mui/material";
 import SecondaryList from "../SecondaryList";
+import { EmptyBox } from "./style";
 
 export default function PrimaryList({ elements }) {
   const [open, setOpen] = useState(false);
@@ -42,10 +43,19 @@ export default function PrimaryList({ elements }) {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
+        {elements.disciplines.length === 0 && <EmptyPeriod />}
         {elements?.disciplines?.map((discipline) => (
           <SecondaryList discipline={discipline} key={discipline.id * 0.23} />
         ))}
       </Collapse>
     </List>
+  );
+}
+
+function EmptyPeriod() {
+  return (
+    <EmptyBox>
+      <p>This period doesn't have any discipline yet</p>
+    </EmptyBox>
   );
 }

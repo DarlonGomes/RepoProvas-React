@@ -19,7 +19,7 @@ export default function TeacherTestList({ details }) {
   const handleClick = () => {
     setOpen(!open);
   };
-  console.log(details)
+  console.log(details);
   return (
     <List
       sx={{ width: "600px", bgcolor: "#FBFBFB", margin: "0 50px 10px" }}
@@ -53,27 +53,29 @@ export default function TeacherTestList({ details }) {
 }
 
 function Test({ test }) {
+  function changePage() {
+    const url = test.pdfUrl;
+    const response = window.confirm(
+      `Do you want to open this pdf: ${test.name} ?`
+    );
+    if (response) window.open(url, "_blank");
+  }
   return (
     <>
       <List component="div" sx={{ width: "500px", margin: "0 50px" }}>
-
-          <ListItemButton >
-            <TestText>
+        <ListItemButton
+          onClick={() => {
+            changePage();
+          }}
+        >
+          <TestText>
             <RadioButtonUnchecked sx={{ fontSize: "10px" }} />
-              <a>
-                {test.date} - {test.name} - {test.discipline}
-              </a>
-            </TestText>
-          </ListItemButton>
+            <a>
+              {test.date} - {test.name} - {test.discipline}
+            </a>
+          </TestText>
+        </ListItemButton>
       </List>
     </>
   );
-}
-
-function EmptyCategory(){
-  return(
-    <EmptyBox>
-     <p> This category doesn't have any posted test</p>
-    </EmptyBox>
-  )
 }

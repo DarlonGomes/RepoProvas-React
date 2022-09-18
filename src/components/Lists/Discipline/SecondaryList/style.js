@@ -11,11 +11,12 @@ export const Paragraph = styled.div`
 `;
 
 export const TestText = styled.div`
-  a {
+  p{
     font-family: "Poppins";
     font-size: 16px;
     font-weight: 300;
     color: #878787;
+    margin: 0
   }
 `;
 

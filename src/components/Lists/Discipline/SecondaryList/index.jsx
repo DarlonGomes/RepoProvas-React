@@ -43,7 +43,7 @@ export default function SecondaryList({ discipline }) {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        {discipline.categories.length === 0 && <EmptyCategory/ >}
+        {discipline.categories.length === 0 && <EmptyCategory />}
         {discipline.categories.map((category) => {
           return <Category key={category.id} category={category} />;
         })}
@@ -61,23 +61,40 @@ function Category({ category }) {
           {category.name}
         </Paragraph>
         {category.tests.map((test) => (
-          <ListItemButton key={test.id * 0.33}>
-            <TestText>
-              <a>
-                {test.date} - {test.name} - {test.teacherName}
-              </a>
-            </TestText>
-          </ListItemButton>
+          <Test test={test} key={test.id} />
         ))}
       </List>
     </>
   );
 }
 
-function EmptyCategory(){
-  return(
+function Test({ test }) {
+  function changePage() {
+    const url = test.pdfUrl;
+    const response = window.confirm(
+      `Do you want to open this pdf: ${test.name} ?`
+    );
+    if (response) window.open(url, "_blank");
+  }
+  return (
+    <ListItemButton
+      key={test.id * 0.33}
+      onClick={() => {
+        changePage(test.pdfUrl);
+      }}
+    >
+      <TestText>
+        <p>
+          {test.date} - {test.name} - {test.teacherName}
+        </p>
+      </TestText>
+    </ListItemButton>
+  );
+}
+function EmptyCategory() {
+  return (
     <EmptyBox>
-     <p> This category doesn't have any posted test</p>
+      <p> This category doesn't have any posted test</p>
     </EmptyBox>
-  )
+  );
 }
