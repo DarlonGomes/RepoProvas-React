@@ -7,4 +7,10 @@ export const Ambient = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  h3{
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #00000099;
+    font-size: 24px;
+  }
 `;

@@ -14,7 +14,6 @@ export default function PrimaryList({ elements }) {
   const handleClick = () => {
     setOpen(!open);
   };
-  console.log(elements);
   return (
     <List
       sx={{

@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import { HandlerContext } from "../../context/handleProvider";
 import { Ambient } from "./style";
 import PageHeader from "../Header";
-import NestedList from "../DisciplineList";
+import DisciplineList from "../Lists/Discipline/DisciplineList";
+import TeacherList from "../Lists/Teacher/TeacherList";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { retrieveLocalData } from "../../utils";
@@ -11,6 +12,7 @@ import {
   gatherTestByTeachers,
 } from "../../services/api";
 import HandleAlert from "../Alert";
+
 
 export default function HomePage() {
   const { isAlertOpen, setIsAlertOpen } = useContext(HandlerContext);
@@ -77,12 +79,12 @@ export default function HomePage() {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <NestedList list={disciplineList} />
+            <DisciplineList list={disciplineList} />
           </TabPanel>
           <TabPanel value="2">
-            <NestedList list={teacherList} />
+            <TeacherList list={teacherList} />
           </TabPanel>
-          <TabPanel value="3">Forms</TabPanel>
+          <TabPanel value="3"><h3>Under Construction</h3></TabPanel>
         </TabContext>
       )}
       {loading && <>Loading</>}

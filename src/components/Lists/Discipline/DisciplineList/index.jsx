@@ -1,7 +1,7 @@
 import * as React from "react";
-import PrimaryList from "../Lists/PrimaryList";
+import PrimaryList from "../PrimaryList";
 
-export default function NestedList({ list }) {
+export default function DisciplineList({ list }) {
   return (
     <>
       {list.map((arrayElements, index) => (
@@ -10,3 +10,4 @@ export default function NestedList({ list }) {
     </>
   );
 }
+

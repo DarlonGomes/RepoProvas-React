@@ -46,8 +46,8 @@ export default function SignIn() {
     try {
       const response = await signIn(form);
       storeDataInLocalStorage(response.data.config);
-      setDisabled(false);
       setTimeout(() => {
+        setDisabled(false);
         navigate("/home");
       }, 1000);
     } catch (err) {
