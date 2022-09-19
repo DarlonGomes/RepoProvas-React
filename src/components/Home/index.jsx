@@ -30,7 +30,7 @@ export default function HomePage() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
- 
+
   useEffect(() => {
     async function getServerLists() {
       const config = retrieveLocalData();
@@ -105,7 +105,21 @@ export default function HomePage() {
           </TabPanel>
         </TabContext>
       )}
-      {loading && <>Loading</>}
+      {loading && LoadingFeed}
     </Ambient>
+  );
+}
+
+function LoadingFeed() {
+  return (
+    <Box sx={{ marginTop: "50px" }}>
+      <ThreeCircles
+        height="100px"
+        width="100px"
+        outerCircleColor="#3F61D7"
+        innerCircleColor="#6C8AE7"
+        middleCircleColor="#8BA7F3"
+      />
+    </Box>
   );
 }
