@@ -94,8 +94,10 @@ export default function SignUp() {
           </h3>
         </Banner>
         <GitHubButton disabled={isDisabled}>
-          Sign in with GitHub
-          <GitHubIcon></GitHubIcon>
+          <a href="https://p20-repoprovas.herokuapp.com/user/sign-in/github">
+            Sign in with GitHub
+            <GitHubIcon></GitHubIcon>
+          </a>
         </GitHubButton>
         <Separator>
           <Divider />
