@@ -17,4 +17,7 @@ export const gatherTestByDisciplines = async (config) =>
 export const gatherTestByTeachers = async (config) =>
   api.get("/test/teacher", config);
 
-// export const getTeacherRelation = async(config)=> api.get("")
+export const gatherFormOptions = async (config) => 
+api.get("/user/options", config);
+
+

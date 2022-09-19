@@ -43,7 +43,7 @@ export default function PrimaryList({ elements }) {
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        {elements.disciplines.length === 0 && <EmptyPeriod />}
+        {elements?.disciplines?.length === 0 && <EmptyPeriod />}
         {elements?.disciplines?.map((discipline) => (
           <SecondaryList discipline={discipline} key={discipline.id * 0.23} />
         ))}
@@ -59,3 +59,4 @@ function EmptyPeriod() {
     </EmptyBox>
   );
 }
+

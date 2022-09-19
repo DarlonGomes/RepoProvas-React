@@ -19,7 +19,7 @@ export default function TeacherTestList({ details }) {
   const handleClick = () => {
     setOpen(!open);
   };
-  console.log(details);
+
   return (
     <List
       sx={{ width: "600px", bgcolor: "#FBFBFB", margin: "0 50px 10px" }}

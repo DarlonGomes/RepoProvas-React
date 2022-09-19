@@ -4,23 +4,27 @@ import { Ambient } from "./style";
 import PageHeader from "../Header";
 import DisciplineList from "../Lists/Discipline/DisciplineList";
 import TeacherList from "../Lists/Teacher/TeacherList";
+import TestForms from "../Forms/NewTest";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { retrieveLocalData } from "../../utils";
 import {
   gatherTestByDisciplines,
   gatherTestByTeachers,
+  gatherFormOptions,
 } from "../../services/api";
 import HandleAlert from "../Alert";
 
-
 export default function HomePage() {
-  const { isAlertOpen, setIsAlertOpen } = useContext(HandlerContext);
+  const { isAlertOpen, setIsAlertOpen, refresh } = useContext(HandlerContext);
   const [value, setValue] = useState("1");
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [disciplineList, setDisciplineList] = useState([]);
   const [teacherList, setTeacherList] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [disciplines, setDisciplines] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -30,13 +34,19 @@ export default function HomePage() {
       const config = retrieveLocalData();
       const disciplinesPromise = gatherTestByDisciplines(config);
       const teachersPromise = gatherTestByTeachers(config);
+      const optionsPromise = gatherFormOptions(config);
       try {
-        const [disciplinesResponse, teachersResponse] = await Promise.all([
-          disciplinesPromise,
-          teachersPromise,
-        ]);
+        const [disciplinesResponse, teachersResponse, optionsResponse] =
+          await Promise.all([
+            disciplinesPromise,
+            teachersPromise,
+            optionsPromise,
+          ]);
         setDisciplineList(disciplinesResponse.data);
         setTeacherList(teachersResponse.data);
+        setCategories(optionsResponse.data.categories);
+        setDisciplines(optionsResponse.data.disciplines);
+        setTeachers(optionsResponse.data.teachers);
         setTimeout(() => {
           setLoading(false);
         }, 1000);
@@ -47,7 +57,7 @@ export default function HomePage() {
       }
     }
     getServerLists();
-  }, []);
+  }, [refresh]);
 
   return (
     <Ambient>
@@ -84,7 +94,13 @@ export default function HomePage() {
           <TabPanel value="2">
             <TeacherList list={teacherList} />
           </TabPanel>
-          <TabPanel value="3"><h3>Under Construction</h3></TabPanel>
+          <TabPanel value="3">
+            <TestForms
+              categories={categories}
+              disciplines={disciplines}
+              teachers={teachers}
+            />
+          </TabPanel>
         </TabContext>
       )}
       {loading && <>Loading</>}
