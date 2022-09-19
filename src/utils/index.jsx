@@ -1,9 +1,10 @@
 function storeDataInLocalStorage(data) {
-  localStorage.setItem(import.meta.VITE_LOCAL_STORAGE, JSON.stringify(data));
+  localStorage.setItem("repoprovas_user_config", JSON?.stringify(data));
 }
 
 function retrieveLocalData() {
-  return JSON.parse(localStorage.getItem(import.meta.VITE_LOCAL_SOTRAGE));
+  const config = JSON?.parse(localStorage.getItem("repoprovas_user_config"));
+  return config;
 }
 
 export { storeDataInLocalStorage, retrieveLocalData };
