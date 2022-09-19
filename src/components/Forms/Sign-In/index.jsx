@@ -101,7 +101,7 @@ export default function SignIn() {
           </h3>
         </Banner>
         <GitHubButton disabled={isDisabled}>
-          <a href="http://localhost:5000/user/sign-in/github">
+          <a href="https://p20-repoprovas.herokuapp.com/user/sign-in/github">
       
             Sign in with GitHub
             <GitHubIcon></GitHubIcon>
