@@ -48,7 +48,7 @@ export default function SignUp() {
 
       setDisabled(false);
       setTimeout(() => {
-        navigate("/sign-in");
+        navigate("/");
       }, 1000);
     } catch (err) {
       setTimeout(() => {
@@ -186,7 +186,7 @@ export default function SignUp() {
             </FormControl>
 
             <Options>
-              <Link to="/sign-in">Already have an account? Sign in</Link>
+              <Link to="/">Already have an account? Sign in</Link>
               <SignInButton status={isDisabled}>Sign Up</SignInButton>
             </Options>
           </Box>

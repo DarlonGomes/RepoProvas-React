@@ -16,7 +16,14 @@ import { signIn } from "../../../services/api";
 import HandleAlert from "../../Alert";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import {InputLabel, OutlinedInput, FormControl, InputAdornment, IconButton, Box} from "@mui/material";
+import {
+  InputLabel,
+  OutlinedInput,
+  FormControl,
+  InputAdornment,
+  IconButton,
+  Box,
+} from "@mui/material";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { HandlerContext } from "../../../context/handleProvider";
@@ -94,8 +101,11 @@ export default function SignIn() {
           </h3>
         </Banner>
         <GitHubButton disabled={isDisabled}>
-          Sign in with GitHub
-          <GitHubIcon></GitHubIcon>
+          <a href="http://localhost:5000/user/sign-in/github">
+      
+            Sign in with GitHub
+            <GitHubIcon></GitHubIcon>
+          </a>
         </GitHubButton>
         <Separator>
           <Divider />

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API,
+  baseURL: import.meta.env.VITE_LOCAL,
 });
 
 export const signUp = async (data) => api.post("/user/sign-up", data);
@@ -17,7 +17,8 @@ export const gatherTestByDisciplines = async (config) =>
 export const gatherTestByTeachers = async (config) =>
   api.get("/test/teacher", config);
 
-export const gatherFormOptions = async (config) => 
-api.get("/user/options", config);
+export const gatherFormOptions = async (config) =>
+  api.get("/user/options", config);
 
+export const getGitHubJWT = async (code) => api.get(`/user/sign-in/github/token?code=${code}`);
 

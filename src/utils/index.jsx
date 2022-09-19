@@ -1,16 +1,10 @@
 function storeDataInLocalStorage(data) {
-  console.log(data);
-  console.log("repoprovas_user_config")
-  const a = localStorage.setItem("repoprovas_user_config", JSON.stringify(data));
-  console.log(a)
+  localStorage.setItem("repoprovas_user_config", JSON?.stringify(data));
 }
 
 function retrieveLocalData() {
-  console.log("repoprovas_user_config")
-  const a = JSON.parse(localStorage.getItem("repoprovas_user_config"));
-  console.log(a)
-  return a
-  
+  const config = JSON?.parse(localStorage.getItem("repoprovas_user_config"));
+  return config;
 }
 
 export { storeDataInLocalStorage, retrieveLocalData };

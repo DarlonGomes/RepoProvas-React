@@ -27,7 +27,7 @@ export default function PageHeader() {
           </h3>
         </div>
         <LogoutIcon
-          sx={{ fontSize: "35px" }}
+          sx={{ fontSize: "35px", cursor: "pointer" }}
           onClick={() => handleUserOrder()}
         />
       </OptionWrapper>

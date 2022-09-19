@@ -57,24 +57,26 @@ const Banner = styled.div`
   }
 `;
 
-const GitHubButton = styled.button`
-  width: 700px;
-  height: 36px;
-  background: ${(props) =>
-    props.disabled ? "#696F72" : "#424445"};
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: "Roboto";
-  font-weight: 500;
-  font-size: 14px;
-  color: #ffffff;
-  margin-bottom: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+const GitHubButton = styled.div`
+  a {
+    width: 700px;
+    height: 36px;
+    background: ${(props) => (props.disabled ? "#696F72" : "#424445")};
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-decoration: none;
+  }
 `;
 const SignInButton = styled.button`
   border-radius: 4px;
@@ -83,8 +85,8 @@ const SignInButton = styled.button`
   border-radius: 5px;
   margin-top: 20px;
   border: none;
-  color: ${props => props.status ? "#729BC3" : "#FFFFFF"};
-  background: ${props => props.status ? "#2E5D8C" :  "#1976d2"};
+  color: ${(props) => (props.status ? "#729BC3" : "#FFFFFF")};
+  background: ${(props) => (props.status ? "#2E5D8C" : "#1976d2")};
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
 

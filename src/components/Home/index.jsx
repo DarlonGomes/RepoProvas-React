@@ -14,8 +14,10 @@ import {
   gatherFormOptions,
 } from "../../services/api";
 import HandleAlert from "../Alert";
+import { useParams } from "react-router-dom";
 
 export default function HomePage() {
+  const token = useParams();
   const { isAlertOpen, setIsAlertOpen, refresh } = useContext(HandlerContext);
   const [value, setValue] = useState("1");
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,7 @@ export default function HomePage() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+ 
   useEffect(() => {
     async function getServerLists() {
       const config = retrieveLocalData();
